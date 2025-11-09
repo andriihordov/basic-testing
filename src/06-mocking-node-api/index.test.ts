@@ -1,6 +1,4 @@
 // Uncomment the code below and write your tests
-import { readFileAsynchronously, doStuffByTimeout, doStuffByInterval } from '.';
-import { join } from 'path';
 jest.mock('fs', () => ({
   existsSync: (pathToFile: string) => pathToFile.includes('1.txt'),
 }));
@@ -12,6 +10,9 @@ jest.mock('path', () => ({
   join: (...pathParts: string[]) =>
     pathParts.join(/\//.test(__dirname) ? '\/' : '\\'),
 }));
+import { readFileAsynchronously, doStuffByTimeout, doStuffByInterval } from '.';
+import { join } from 'path';
+
 describe('doStuffByTimeout', () => {
   let callback: () => void;
   let timeout: number;
